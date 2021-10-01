@@ -144,9 +144,9 @@ def _xception_block(inputs, depth_list, prefix, skip_connection_type, stride,
                                 kernel_size=1,
                                 stride=stride)
         shortcut = BatchNormalization(name=prefix + '_shortcut_BN')(shortcut)
-        outputs = tensorflow.keras.layers.add([residual, shortcut])
+        outputs = tf.keras.layers.add([residual, shortcut])
     elif skip_connection_type == 'sum':
-        outputs = tensorflow.keras.layers.add([residual, inputs])
+        outputs = tf.keras.layers.add([residual, inputs])
     elif skip_connection_type == 'none':
         outputs = residual
     if return_skip:
